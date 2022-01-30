@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body > 
+
+    <div class="container bg-success"  >
+
+        <div class="row" style="background-color: beige;"> 
+            <div class="col-md-2 col-sm-3 col-xs-6">
+                <h2>Blogs</h2>
+            </div> 
+            <div class="col-md-10 col-sm-9 col-xs-6" >
+                <ul class="nav nav-pills " style="float: right;" >
+                    <li class="nav-item" id="post" style="display: none;">
+                        <a href="#home" class="nav-link active" data-toggle="modal" data-target="#myModel" style="font-size: 18px;color: black;" >Post blog</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a href="blogs.html" class="nav-link" style="font-size: 18px;color: black;" >blogs</a>
+                    </li>  
+                </ul>
+            </div> 
+        </div> 
+         
+ 
+        <div class="container-fluid " style="width:50%;padding-top: 10px;padding-bottom: 20px;">
+            <h4>Login Here</h4>
+
+            <h5 id="error" style="color:red"></h5>
+            <form class="needs-validation" action="blogs.html" onsubmit="return myValidation();"> 
+                             
+                <div class="row" >
+                    <div class="col-md-12" >
+                        <label>Username</label>
+                        <input type="text" id="user" class="form-control" placeholder="Enter username" required> 
+                    </div> 
+                </div>
+                <div class="row" >
+                    <div class="col-md-12" >
+                        <label>Password</label>
+                        <input type="text" id="password" class="form-control" placeholder="Enter password" required> 
+                    </div> 
+                </div>
+                 
+                <div class="form-row " style="margin-top: 10px;">
+                    <button type="submit" class="btn btn-primary" id="loginbtn" onclick="myValidation()">Login</button>
+                    <button type="reset" class="btn btn-primary">Reset</button>
+                </div>
+            </form>
+        </div>
+
+         
+      </div>
+
+    <script >  
+  
+
+            function myValidation() {  
+                
+                var users={'admin':'admin_p','user1':'user1_p','user2':'user2_p'};
+
+                var loginbtn = document.getElementById("loginbtn"); 
+                var error = document.getElementById("error"); 
+                
+                var user = document.getElementById("user").value;
+                var password = document.getElementById("password").value;  
+                if (users[user]){ 
+                    if (users[user]==password){  
+                        saveuser();
+                        return true;
+                    }else{
+                        error.innerHTML='password incorrect';
+                        return false;
+                    }
+                }else{
+                    error.innerHTML='user not exist';
+                    return false;
+                }
+            }
+ 
+ 
+            function saveuser() {   
+                window.localStorage.setItem('logedin', user); 
+                
+            }
+ 
+ 
+ 
+    </script>
+  
+</body>
+</html>

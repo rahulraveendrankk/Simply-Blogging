@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body> 
+
+    <div class="container "  style="background-color: #dddddd;">
+
+        <div class="row" style="background-color: cadetblue;"> 
+            <div class="col-md-2 col-sm-3 col-xs-6">
+                <h2>Blogs</h2>
+            </div> 
+            <div class="col-md-10 col-sm-9 col-xs-6" >  
+                <ul class="nav nav-pills " style="float: right;" >
+                    <li class="nav-item" id="post" style="display: none;">
+                        <a href="#home" class="nav-link active" data-toggle="modal" data-target="#myModel" style="font-size: 18px;color: black;" >Post blog</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a href="login.html" class="nav-link" style="font-size: 18px;color: black;" >Login</a>
+                    </li>  
+                </ul>
+            </div> 
+        </div> 
+         
+ 
+        <div id="best" class="container-fluid" style="padding-top: 10px;padding-bottom: 80px;">
+            
+            <div class="row" id="blogs">
+                <div class="col-md-5 col-sm-5 col-xs-11" id="" style="border: 1px solid black; margin-left: 5%;margin-top: 5%;"> 
+                        <h3>Title1</h3>
+                        <p>First blog description</p> 
+                </div>
+                
+            </div> 
+        </div>
+
+        <div class="modal fade" id="myModel">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Post your blog</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body"> 
+                        <div class="form-row" >
+                            <div class="col-md-12" >
+                                <label>Title</label>
+                                <input type="text" id="blog_title" class="form-control" placeholder="Enter Title" required> 
+                            </div> 
+                        </div>
+                        <div class="form-row" >
+                            <div class="col-md-12" style="margin-bottom: 10px;">
+                                <label>Description</label>
+                                <textarea class="form-control" id="blog_desc"  required></textarea> 
+                            </div>  
+                        </div> 
+                            
+                        <div class="form-row " >
+                            <button type="submit" class="btn btn-primary" id="save_blog">Submit</button> 
+                        </div> 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+      </div>
+
+    <script>
+        (function() {
+
+            'use strict';
+
+            var lastId = 0;
+            var postbtn = document.getElementById("post");
+            var blogWrapper = document.getElementById("blogs");
+            var btnSave = document.getElementById("save_blog");
+            var removeIcon;
+            var updateIcon;
+            var blogList;
+ 
+            function init() {   
+                if (!!(window.localStorage.getItem('logedin'))) { 
+                    postbtn.style.display = "block";
+                }  
+
+                if (!!(window.localStorage.getItem('blogList'))) { 
+                    blogList = JSON.parse(window.localStorage.getItem('blogList'));
+                } else { 
+                    blogList = [];
+                }
+                btnSave.addEventListener('click', saveblog);
+                showList();
+            }
+ 
+
+            function showList() { 
+                if (!!blogList.length) { 
+                    getLastblogId();
+                    for (var item in blogList) {
+                        var blog = blogList[item];
+                        addblogToList(blog);
+                    } 
+                }
+                
+            }
+
+            function saveblog(event) {
+                
+                var blog = {
+                    blogId: lastId,
+                    blogtitle: document.getElementById("blog_title").value,
+                    blogDesc: document.getElementById("blog_desc").value
+                };
+                blogList.push(blog); 
+                addblogToList(blog); 
+                syncTask();
+                lastId++;
+            }
+
+            function syncTask() {   
+                window.localStorage.setItem('blogList', JSON.stringify(blogList));
+                blogList = JSON.parse(window.localStorage.getItem('blogList')); 
+            }
+
+            function getLastblogId() { 
+                var lastblog = blogList[blogList.length - 1];
+                lastId = lastblog.blogId + 1;
+            }
+
+            function addblogToList(blog) {
+
+                // <div class="col-md-5 col-sm-5 col-xs-11" id="" style="border: 1px solid black; margin-left: 5%;margin-top: 5%;"> 
+                //     <h3>Title1</h3>
+                //     <p>First blog description</p> 
+                // </div> 
+                var outerdiv = document.createElement('div');
+                var title = document.createElement('h3');
+                var description = document.createElement('p');
+                
+                title.innerHTML = blog.blogtitle;
+                description.innerHTML = blog.blogDesc; 
+                outerdiv.appendChild(title);
+                outerdiv.appendChild(description); 
+                outerdiv.className = "col-md-5 col-sm-5 col-xs-11";
+                outerdiv.setAttribute("id", blog.blogId);
+                outerdiv.setAttribute("style","border: 1px solid black; margin-left: 5%;margin-top: 5%;"); 
+               
+                blogWrapper.appendChild(outerdiv);
+            }
+ 
+
+            init();
+
+
+        })();
+    </script>
+  
+</body>
+</html>

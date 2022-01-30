@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body> 
+
+    <div class="container">
+
+        <div class="row" style="background-color: cadetblue;">
+            <div class="col-md-1 col-sm-3 col-xs-6" >
+                <img src="img/logo.png"  style="height:50px;">
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-6"  >
+                <h2>Early Bird</h2>
+            </div> 
+        </div> 
+        
+       
+        <ul class="nav nav-pills nav-justified">
+            <li class="nav-item">
+                <a href="#home" class="nav-link active">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#about" class="nav-link">About Us</a>
+            </li> 
+            <li class="nav-item">
+                <a href="#best" class="nav-link">Best deller</a>
+            </li> 
+            <li class="nav-item">
+                <a href="#contact" class="nav-link">Contact Us</a>
+            </li>
+        </ul>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top: 10px;"> 
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+   
+          <div class="carousel-inner">
+            <div class="item active">
+              <img src="img/photo1.jpg"  style="width:100%;height:450px;">
+            </div>
+  
+            <div class="item">
+              <img src="img/photo2.jpg"  style="width:100%;height: 450px">
+            </div>
+  
+            <div class="item">
+              <img src="img/photo4.jpg" style="width:100%;height: 450px">
+            </div>
+          </div>
+   
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+
+        <div id="home" class="container-fluid bg-success" style="padding-top: 80px;padding-bottom: 80px;">
+            <h1>Home</h1> 
+            <p>Home Section</p>
+            <p>A restaurant is a business that prepares and serves food and drinks to customers. Meals are generally served and eaten on the premises, but many restaurants also offer take-out and food delivery services. </p>
+        </div>
+        <div id="about" class="container-fluid bg-warning" style="padding-top: 80px;padding-bottom: 80px;">
+            <h1>About-Us</h1> 
+            <p>About Our early bird</p>
+            <p>A restaurant is a business that prepares and serves food and drinks to customers. Meals are generally served and eaten on the premises, but many restaurants also offer take-out and food delivery services.</p>
+        </div>
+        <div id="best" class="container-fluid bg-success" style="padding-top: 80px;padding-bottom: 80px;">
+            <h1>Best sellers</h1> 
+            <p>Early bird best sellers</p>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12" >
+                    <img src="img/img1.jpg"  style="height:200px;width: 80%;">
+                    <p>Barbeque base</p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12"  >
+                    <img src="img/img2.jpg"  style="height:200px;width: 80%;">
+                    <p>Chicken orange</p>
+                </div>  
+                <div class="col-md-6 col-sm-6 col-xs-12"  >
+                    <img src="img/img3.jpg"  style="height:200px;width: 80%;">
+                    <p>Chicken orange</p>
+                </div> 
+                <div class="col-md-6 col-sm-6 col-xs-12"  >
+                    <img src="img/img4.jpg"  style="height:200px;width: 80%;">
+                    <p>Early bird best sellers</p>
+                </div> 
+            </div> 
+        </div>
+        <div id="contact" class="container-fluid bg-primary" style="padding-top: 80px;padding-bottom: 80px;">
+            <h1>Contact-us</h1> 
+            <hr>
+            <h3>Query Form</h3>
+            
+            <form class="needs-validation" novalidate>
+                <div class="form-row">
+                    <div class="col-md-6 mb-4">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" placeholder="Enter full Name" required>
+                        <div class="invalid-feedback">
+                            Please provide full Name
+                        </div>
+                    </div> 
+                    <div class="col-md-6 mb-4">
+                        <label>Email</label>
+                        <input type="email" class="form-control"  placeholder="Enter Email" required>
+                        <div class="invalid-feedback">
+                            Please Email
+                        </div>
+                    </div>  
+                </div> 
+
+                <div class="form-row">
+                    <div class="col-md-6 mb-4">
+                        <label>Contact</label>
+                        <input type="number" class="form-control" placeholder="Enter phone" required>
+                        <div class="invalid-feedback">
+                            Please provide phone number
+                        </div>
+                    </div> 
+                    <div class="col-md-6 mb-4">
+                        <label>Message</label>
+                        <textarea class="form-control" required></textarea>
+                        <div class="invalid-feedback">
+                            Please provide your message
+                        </div>
+                    </div>  
+                </div> 
+                 
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-primary">Reset</button>
+                </div>
+            </form>
+        </div>
+      </div>
+
+      <script>
+        (function(){
+             window.addEventListener('load',function(){
+                 var forms= document.getElementsByClassName('needs-validation');
+                 var validation= Array.prototype.filter.call(forms,function(form){
+                     form.addEventListener('submit',function(){
+                        if(form.checkValidity()===false)
+                        {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated')
+                     }),false
+                 });
+             },false)
+         })();
+     </script>
+  
+</body>
+</html>
